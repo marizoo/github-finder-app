@@ -3,7 +3,7 @@ class UI {
     this.profile = document.getElementById("profile");
   }
 
-  //we'll create a method
+  // create a method to show the profile
   showProfile(user) {
     this.profile.innerHTML = `
         <div class="card__profile__user">
@@ -25,5 +25,66 @@ class UI {
         <h3 class="card__profile__latestRepo__Title">Latest Repos</h3>
         <div class="card__profile__latestRepo__Repo" id="repos"></div>
     `;
+  }
+
+  //  Show User Repos
+  showRepos(repos) {
+    let output = "";
+    // data = JSON.parse(repos);
+
+    datas.forEach(function (repo) {
+      output += `
+                <div class="card__repos">
+                    <div class="card__repos__row">
+                        <a class="card__repos__row__link" href="repo.html_url" target="_blank">${repo.name}</a>
+                    </div>
+                    <div class="card__repos__row">
+                    <span class="card__repos__row--btn btn--1" >Stars: ${repo.stargazers_count}</span>
+                    <span class="card__repos__row--btn btn--2" >Watchers: ${repo.watchers_count}</span>
+                    <span class="card__repos__row--btn btn--3" >Forks: ${repo.forks_count}</span>
+                    </div>
+                </div>
+            `;
+    });
+
+    // Output the Repos
+    document.getElementById("repos").innerHTML = output;
+  }
+
+  //SHow alert message
+  showAlert(message, className) {
+    // clear any remaining alerts
+    this.clearAlert();
+    //create div
+    const div = document.createElement("div");
+    //add classes
+    div.className = className;
+    //add text
+    div.appendChild(document.createTextNode(message));
+    //Get Parent
+    const container = document.querySelector(".card__searchContainer");
+    // Get search box
+    const search = document.querySelector(".card__searchContainer__title");
+    // Insert Alert
+    container.insertBefore(div, search);
+
+    //Timeout after 3sec
+    setTimeout(() => {
+      this.clearAlert();
+    }, 3000);
+  }
+
+  // clear alert message
+  clearALert() {
+    const currentAlert = document.querySelector(".card__showAlert");
+
+    if (currentAlert) {
+      currentAlert.remove();
+    }
+  }
+
+  // clear profile from the page
+  clearProfile() {
+    this.profile.innerHTML = "";
   }
 }
