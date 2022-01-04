@@ -8,7 +8,31 @@
     <title>Github Finder</title>
 </head>
 <body>
-    
+    <div class="container">
+
+        <div class="card">
+            <nav class="card__navbar">
+                <a class="card__navbar__link" href="#">Github Finder</a>
+            </nav>
+
+            <div class="card__searchContainer">
+                <h2 class="card__searchContainer__title">Search Github Users</h2>
+                <p class="card__searchContainer__lead">Enter a username to fetch a user profile and repos </p>
+                <input type="text" id="searchUser"
+                class="card__searchContainer__input"
+                placeholder="Github Username...">
+            </div>
+            <br />
+            <div class="card__profile" id="profile"></div>
+            <footer class="card__footer">
+                Github finder &copy;
+            </footer>
+        </div>
+
+    </div>
+
+<script src="github.js"></script>
+<script src="ui.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
